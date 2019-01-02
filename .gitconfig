@@ -1,0 +1,37 @@
+[user]
+  name = Nils Thenhausen
+  email = nt@ovt.me
+[github]
+  user = nilos
+[color]
+  ui = true
+[core]
+	excludesfile = /Users/nilos/.gitignore
+  compression = -1
+	editor = vim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[alias]
+  browse = log --graph --pretty=format:'%Cred%h%Creset %Cblue(%aN)%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr, %aD)%Creset' --abbrev-commit --date=short
+  tree = log --graph --pretty=format:'%Cred%h%Creset %Cblue(%aN)%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr, %aD)%Creset' --abbrev-commit --date=short -n 32
+  st = status
+  co = checkout
+  up = pull
+  a = add
+  c = commit -v
+  b = branch
+  plog = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+  dsf = "!f() { [ -z \"$GIT_PREFIX\" ] || cd \"$GIT_PREFIX\" && git diff --color \"$@\" | diff-so-fancy  | less --tabs=4 -RFX; }; f"
+  pushup = !git push --set-upstream origin `git symbolic-ref --short HEAD`
+[push]
+  default = tracking
+[apply]
+  whitespace = nowarn
+[http]
+  postBuffer = 52428800 # 50M.
+[commit]
+  gpgsign = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
