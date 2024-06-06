@@ -1,0 +1,10 @@
+ZSH_THEME="robbyrussell"
+
+plugins=(git poetry nvm)
+
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+
+export COMPOSE_DOCKER_CLI_BUILD=1
+
+export AWS_DEFAULT_REGION="eu-central-1"
