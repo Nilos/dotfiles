@@ -1,6 +1,19 @@
+export ZSH="$HOME/.oh-my-zsh"
+
 ZSH_THEME="robbyrussell"
 
 plugins=(git poetry nvm)
+
+# Let the nvm plugin load nvm and run `nvm use` when entering a dir with .nvmrc
+zstyle ':omz:plugins:nvm' autoload yes
+
+# Must be on fpath before oh-my-zsh runs compinit
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+
+source $ZSH/oh-my-zsh.sh
+
+# Secrets and machine-specific settings (tokens, passwords, AWS profiles) live here, not in the repo
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 export HISTSIZE=100000
 export HISTFILESIZE=100000
@@ -8,3 +21,13 @@ export HISTFILESIZE=100000
 export COMPOSE_DOCKER_CLI_BUILD=1
 
 export AWS_DEFAULT_REGION="eu-central-1"
+
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+
+command -v kubectl >/dev/null && source <(kubectl completion zsh)
+command -v logcli >/dev/null && eval "$(logcli --completion-script-zsh)"
